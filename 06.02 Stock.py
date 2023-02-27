@@ -5,7 +5,7 @@ stock = open("06.02 Stock.txt", "rt")
 currentStock = stock.readline()
 previousStock = 0
 
-print("{:>10}{:>10}".format("Price", "Change"))
+print("{:>9}{:>12}".format("Price", "Change"))
 print("{:10}".format(float(currentStock)))
 
 previousStock = currentStock
@@ -16,3 +16,5 @@ while currentStock != "":
 
     previousStock = currentStock
     currentStock = stock.readline()
+
+stock.close()

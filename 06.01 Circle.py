@@ -17,3 +17,5 @@ print("{:>15}{:>15}{:>15}{:>15}".format("Radius", "Diameter", "Circumference", "
 while radius != "":
     print("{:>15.5f}{:>15.5f}{:>15.5f}{:>15.5f}".format(float(radius), diameter(radius), circumference(radius), area(radius)))
     radius = radii.readline()
+
+radii.close()
