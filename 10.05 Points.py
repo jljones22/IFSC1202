@@ -22,7 +22,7 @@ def xAngle(pointA, pointB):
 Points = open("10.05 Points.txt", "rt")
 line = Points.readline()
 
-print(f"{'Point A':>20}{'Point B':>20}{'Distance':>20}{'Midpoint':>20}{'Angel':>20}")
+print(f"{'Point A':>20}{'Point B':>20}{'Distance':>20}{'Midpoint':>20}{'Angle':>20}")
 print(f"{'---------------':>20}" * 5)
 
 while line != "":

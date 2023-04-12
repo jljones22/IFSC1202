@@ -1,10 +1,8 @@
 class Pet():
-    m_name = ""
-    m_type = ""
-    m_age = -1
-
     def __init__(self):
-        pass
+        self.m_name = ""
+        self.m_type = ""
+        m_age = -1
 
 pets = open("10.01 Pets.txt", "rt")
 line = pets.readline()
