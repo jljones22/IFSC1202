@@ -9,37 +9,42 @@ class RetailItem:
 
 def printInventory(ls):
     print("{:>11} {:>20} {:>20} {:>20}".format("Description", "Units On Hand", "Price", "Inventory Value"))
-    for item in range(len(ls)):
-        print(f"{item.description:>11} {item.unitOnHand:>20} {item.price:>20} {item.inventoryValue():>20.2f}")
 
+    for i in range(len(ls)):
+        print(f"{ls[i].description:>11} {ls[i].unitOnHand:>20} {ls[i].price:>20} {ls[i].inventoryValue():>20.2f}")
+    print('\n', end='')
 
-inventory = open("10.02 Inventory.txt", "rt")
+def findInventory(ls, itemName):
+    for i in range(len(ls)):
+        if ls[i].description == itemName: return i
+    else: return -1
+
+inventory = open("11.01 Inventory.txt", "rt")
 line = inventory.readline()
 
-p = []
+ril = []
 
 while line != "":
     ls = line.strip().split(',')
-    p.append(ls)
+    
+    ri = RetailItem(ls[0], int(ls[1]), float(ls[2]))
+    ril.append(ri)
 
     line = inventory.readline()
 
-for i in range(len(p)):
-    match p[i][0]:
-        case 'Jacket':
-            jacket.description = p[i][0]
-            jacket.unitOnHand = p[i][1]
-            jacket.price = float(p[i][2])
-        case 'Jeans':
-            jeans.description = p[i][0]
-            jeans.unitOnHand = p[i][1]
-            jeans.price = float(p[i][2])
-        case 'Shirt':
-            shirt.description = p[i][0]
-            shirt.unitOnHand = p[i][1]
-            shirt.price = float(p[i][2])
+inventory.close()
+printInventory(ril)
 
-print("{:>11} {:>20} {:>20} {:>20}".format("Description", "Units On Hand", "Price", "Inventory Value"))
-print(f"{jacket.description:>11} {jacket.unitOnHand:>20} {jacket.price:>20} {jacket.inventoryValue():>20.2f}")
-print(f"{jeans.description:>11} {jeans.unitOnHand:>20} {jeans.price:>20} {jeans.inventoryValue():>20.2f}")
-print(f"{shirt.description:>11} {shirt.unitOnHand:>20} {shirt.price:>20} {shirt.inventoryValue():>20.2f}")
+inventory = open("11.01 InventoryUpdate.txt", "rt")
+line = inventory.readline()
+
+while line != "":
+    ls = line.strip().split(',')
+
+    index = findInventory(ril, ls[0])
+    if (not index < 0): ril[index].price = float(ls[1])
+
+    line = inventory.readline()
+
+inventory.close()
+printInventory(ril)
